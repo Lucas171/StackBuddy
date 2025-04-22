@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
+import Navbar from '@/components/layout/Navbar'
 
 export default function SigninPage() {
   const router = useRouter()
@@ -21,6 +22,8 @@ export default function SigninPage() {
   }
 
   return (
+    <><Navbar />
+    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
       <div className="bg-white shadow p-6 rounded w-full max-w-sm space-y-4">
         <h2 className="text-xl font-bold">Welcome back</h2>
@@ -55,6 +58,6 @@ export default function SigninPage() {
 
         {error && <p className="text-sm text-red-500">{error}</p>}
       </div>
-    </div>
+    </div></>
   )
 }

@@ -23,7 +23,7 @@ export default function LanguageBreakdownCard({ data }: Props) {
   const totalLines = data.reduce((sum, lang) => sum + lang.lines, 0)
 
   return (
-    <div className="rounded-xl border p-4 shadow bg-white">
+    <div className="rounded-xl border border-gray-200 p-4 bg-white shadow-md">
       <h2 className="text-lg font-semibold mb-4">Language Breakdown</h2>
       <div className="space-y-4">
         {data.map((lang, index) => {

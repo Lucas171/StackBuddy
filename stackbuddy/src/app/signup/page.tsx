@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
+import Navbar from '@/components/layout/Navbar'
 
 export default function SignupPage() {
   const router = useRouter()
@@ -21,6 +22,8 @@ export default function SignupPage() {
   }
 
   return (
+    <><Navbar />
+    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
       <div className="bg-white shadow p-6 rounded w-full max-w-sm space-y-4">
         <h2 className="text-xl font-bold">Create your account</h2>
@@ -56,5 +59,6 @@ export default function SignupPage() {
         {error && <p className="text-sm text-red-500">{error}</p>}
       </div>
     </div>
+    </>
   )
 }

@@ -4,6 +4,9 @@ import { useState } from 'react'
 import FileUploader from '@/components/FileUploader'
 import LanguageBreakdownCard from '@/components/dashboard/LanguageBreakdownCard'
 import StackCategoryCard from '@/components/dashboard/StackCategoryCard'
+import Navbar from '@/components/layout/Navbar'
+import PreviousAnalysesPanel from '@/components/PreviousAnalysis'
+
 
 export default function Home() {
   const [analysisResult, setAnalysisResult] = useState<null | {
@@ -61,18 +64,24 @@ export default function Home() {
   }
 
   return (
-    <main className="p-6 space-y-6">
-      <FileUploader onComplete={handleUploadComplete} />
+    <>
+      <Navbar />
+      
+      <main className="p-6 space-y-6">
+        <PreviousAnalysesPanel analyses={[]} />
+        <FileUploader onComplete={handleUploadComplete} />
 
-      {analysisResult && (
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <LanguageBreakdownCard data={getLanguageBreakdown()} />
-          <StackCategoryCard title="Tools" {...buildStackCardData('tools')} />
-          <StackCategoryCard title="Infra" {...buildStackCardData('infra')} />
-          <StackCategoryCard title="Tests" {...buildStackCardData('tests')} />
-          <StackCategoryCard title="Frameworks" {...buildStackCardData('frameworks')} />
-        </div>
-      )}
-    </main>
+        {analysisResult && (
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <LanguageBreakdownCard data={getLanguageBreakdown()} />
+            <StackCategoryCard title="Tools" {...buildStackCardData('tools')} />
+            <StackCategoryCard title="Infra" {...buildStackCardData('infra')} />
+            <StackCategoryCard title="Tests" {...buildStackCardData('tests')} />
+            <StackCategoryCard title="Frameworks" {...buildStackCardData('frameworks')} />
+          </div>
+        )}
+      </main>
+    </>
+    
   )
 }
